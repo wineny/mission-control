@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 interface Session {
   id: string;
-  timestamp: string;
+  startedAt?: string;
+  timestamp?: string;
   topic: string;
   messageCount: number;
 }
@@ -17,12 +18,20 @@ export default function TaskTracker() {
     fetch("/api/sessions")
       .then((r) => r.json())
       .then((d) => {
-        setSessions(d.sessions || []);
+        const list = Array.isArray(d.sessions) ? d.sessions : [];
+        setSessions(list);
+        setLoading(false);
+      })
+      .catch(() => {
+        setSessions([]);
         setLoading(false);
       });
   }, []);
 
+  const getTimestamp = (s: Session) => s.timestamp || s.startedAt || "";
+
   const formatDate = (ts: string) => {
+    if (!ts) return "";
     const d = new Date(ts);
     const month = d.getMonth() + 1;
     const day = d.getDate();
@@ -32,7 +41,6 @@ export default function TaskTracker() {
   };
 
   const extractTopic = (text: string) => {
-    // Clean up Slack thread history prefixes
     const cleaned = text
       .replace(/\[Thread history.*?\]\s*/g, "")
       .replace(/\[Slack .*?\] /g, "")
@@ -73,7 +81,7 @@ export default function TaskTracker() {
                 </p>
                 <div className="flex items-center gap-3 mt-1">
                   <span className="text-xs text-zinc-500">
-                    {formatDate(s.timestamp)}
+                    {formatDate(getTimestamp(s))}
                   </span>
                   <span className="text-xs text-zinc-400">
                     {s.messageCount}개 메시지

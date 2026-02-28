@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/layout/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mission Control — 로찌",
+  title: "로찌네 대시보드 — Mission Control",
   description: "OpenClaw 미션 컨트롤 대시보드",
 };
 
@@ -27,7 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 text-zinc-100`}
       >
-        {children}
+        <Sidebar />
+        <main className="md:ml-64 min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );
