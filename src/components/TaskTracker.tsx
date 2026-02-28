@@ -50,40 +50,38 @@ export default function TaskTracker() {
   };
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6">
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xl">📋</span>
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-          Task Tracker
-        </h3>
-        <span className="ml-auto text-sm text-zinc-500">
+        <h3 className="text-lg font-semibold text-gray-900">Task Tracker</h3>
+        <span className="ml-auto text-sm text-gray-400">
           최근 {sessions.length}개 세션
         </span>
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center py-8 text-zinc-400">
+        <div className="flex items-center justify-center py-8 text-gray-400">
           로딩 중...
         </div>
       ) : sessions.length === 0 ? (
-        <div className="py-8 text-center text-zinc-400">세션 없음</div>
+        <div className="py-8 text-center text-gray-400">세션 없음</div>
       ) : (
         <div className="space-y-2 max-h-96 overflow-y-auto">
           {sessions.map((s) => (
             <div
               key={s.id}
-              className="flex items-start gap-3 rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
+              className="flex items-start gap-3 rounded-xl bg-gray-50 p-3"
             >
               <div className="shrink-0 mt-0.5 h-2 w-2 rounded-full bg-emerald-500" />
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">
+                <p className="text-sm font-medium text-gray-800 truncate">
                   {extractTopic(s.topic)}
                 </p>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-xs text-zinc-500">
+                  <span className="text-xs text-gray-500">
                     {formatDate(getTimestamp(s))}
                   </span>
-                  <span className="text-xs text-zinc-400">
+                  <span className="text-xs text-gray-400">
                     {s.messageCount}개 메시지
                   </span>
                 </div>

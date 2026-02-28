@@ -27,11 +27,11 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <span className="text-3xl">🥑</span>
           <div>
-            <h1 className="text-2xl font-bold text-zinc-100">로찌네 대시보드</h1>
-            <p className="text-sm text-zinc-500">OpenClaw Mission Control</p>
+            <h1 className="text-2xl font-bold text-gray-900">로찌네 대시보드</h1>
+            <p className="text-sm text-gray-500">OpenClaw Mission Control</p>
           </div>
         </div>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-gray-400">
           {new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric", weekday: "long" })}
         </p>
       </header>

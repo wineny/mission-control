@@ -14,7 +14,7 @@ export default function MissionBanner() {
   if (!mission) return null;
 
   return (
-    <div className="rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 p-6 text-white shadow-lg">
+    <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white shadow-md">
       <div className="flex items-center gap-3 mb-2">
         <span className="text-2xl">🥑</span>
         <h2 className="text-sm font-medium uppercase tracking-wider opacity-80">
